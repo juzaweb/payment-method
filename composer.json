@@ -1,0 +1,20 @@
+{
+    "name": "juzaweb/payment-method",
+    "description": "",
+    "extra": {
+        "juzaweb": {
+            "name": "juzaweb/payment-method",
+            "domain": "jupa",
+            "cms_min": "3.3",
+            "version": "1.0",
+            "providers": [
+                "Juzaweb\\PaymentMethod\\Providers\\PaymentMethodServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Juzaweb\\PaymentMethod\\": "src/"
+        }
+    }
+}
