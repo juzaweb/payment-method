@@ -10,12 +10,16 @@
 
 namespace Juzaweb\PaymentMethod\Support;
 
-use Juzaweb\Ecommerce\Models\PaymentMethod;
-use Juzaweb\PaymentMethod\Support\Payments\Cod;
-use Juzaweb\PaymentMethod\Support\Payments\Paypal;
+use Juzaweb\PaymentMethod\Interfaces\PaymentMethodInterface;
+use Juzaweb\PaymentMethod\Models\PaymentMethod;
 
 class Payment
 {
+    public function register()
+    {
+
+    }
+
     public function make(PaymentMethod $paymentMethod): PaymentMethodInterface
     {
         return match ($paymentMethod->type) {

@@ -8,10 +8,10 @@
  * @license    MIT
  */
 
-namespace Juzaweb\PaymentMethod\PaymentMethods;
+namespace Juzaweb\PaymentMethod\Support\PaymentMethods;
 
 use Juzaweb\Ecommerce\Abstracts\PaymentMethodAbstract;
-use Juzaweb\PaymentMethod\Support\PaymentMethodInterface;
+use Juzaweb\PaymentMethod\Interfaces\PaymentMethodInterface;
 
 class Cod extends PaymentMethodAbstract implements PaymentMethodInterface
 {

@@ -8,7 +8,7 @@
  * @license    MIT
  */
 
-namespace Juzaweb\PaymentMethod\Support;
+namespace Juzaweb\PaymentMethod\Interfaces;
 
 interface PaymentMethodInterface
 {

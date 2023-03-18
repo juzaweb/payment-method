@@ -3,7 +3,7 @@
     "description": "",
     "extra": {
         "juzaweb": {
-            "name": "juzaweb/payment-method",
+            "name": "Payment Methods",
             "domain": "jupa",
             "cms_min": "3.3",
             "version": "1.0",

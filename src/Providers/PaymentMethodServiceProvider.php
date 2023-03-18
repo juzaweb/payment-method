@@ -2,32 +2,19 @@
 
 namespace Juzaweb\PaymentMethod\Providers;
 
+use Juzaweb\CMS\Facades\ActionRegister;
 use Juzaweb\CMS\Support\ServiceProvider;
+use Juzaweb\PaymentMethod\Actions\ResourceAction;
 
 class PaymentMethodServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        //
+        ActionRegister::register([ResourceAction::class]);
     }
 
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
     public function register()
     {
         //
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return [];
     }
 }
