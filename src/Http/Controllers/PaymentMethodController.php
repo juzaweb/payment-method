@@ -15,7 +15,7 @@ class PaymentMethodController extends BackendController
         getDataForForm as DataForForm;
     }
 
-    protected string $viewPrefix = 'ecom::backend.payment_method';
+    protected string $viewPrefix = 'jwpm::backend.payment_method';
 
     protected function getDataTable(...$params): PaymentMethodDatatable
     {
@@ -25,6 +25,7 @@ class PaymentMethodController extends BackendController
     protected function validator(array $attributes, ...$params): \Illuminate\Contracts\Validation\Validator
     {
         $types = config('ecommerce.payment_methods');
+
         $types = array_keys($types);
 
         return Validator::make(
@@ -48,7 +49,7 @@ class PaymentMethodController extends BackendController
 
     protected function getTitle(...$params): string
     {
-        return trans('ecom::content.payment_methods');
+        return trans('jwpm::content.name');
     }
 
     protected function getDataForForm($model, ...$params): array

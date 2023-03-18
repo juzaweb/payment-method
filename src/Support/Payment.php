@@ -10,14 +10,33 @@
 
 namespace Juzaweb\PaymentMethod\Support;
 
+use Illuminate\Support\Collection;
+use Juzaweb\CMS\Contracts\GlobalDataContract as GlobalData;
+use Juzaweb\CMS\Contracts\HookActionContract as HookAction;
+use Juzaweb\PaymentMethod\Contracts\Payment as PaymentContract;
 use Juzaweb\PaymentMethod\Interfaces\PaymentMethodInterface;
 use Juzaweb\PaymentMethod\Models\PaymentMethod;
 
-class Payment
+class Payment implements PaymentContract
 {
-    public function register()
+    public function __construct(protected HookAction $hookAction, protected GlobalData $globalData)
     {
+    }
 
+    public function registerPaymentMethod(string|PaymentMethodInterface $method)
+    {
+        if (!$method instanceof PaymentMethodInterface) {
+            $method = app($method);
+        }
+
+        $args = [
+            'key' => $method->getName(),
+            'label' => $method->getLabel(),
+            'class' => get_class($method),
+            'configs' => $method->getConfigs(),
+        ];
+
+        $this->globalData->set("payment_methods.{$args['key']}", new Collection($args));
     }
 
     public function make(PaymentMethod $paymentMethod): PaymentMethodInterface

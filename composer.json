@@ -4,7 +4,7 @@
     "extra": {
         "juzaweb": {
             "name": "Payment Methods",
-            "domain": "jupa",
+            "domain": "jwpm",
             "cms_min": "3.3",
             "version": "1.0",
             "providers": [
