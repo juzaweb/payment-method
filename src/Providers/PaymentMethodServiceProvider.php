@@ -3,21 +3,22 @@
 namespace Juzaweb\PaymentMethod\Providers;
 
 use Juzaweb\CMS\Support\ServiceProvider;
+use Juzaweb\PaymentMethod\Actions\PaymentMethodAction;
+use Juzaweb\PaymentMethod\Contracts\PaymentMethodManager as PaymentMethodManagerContract;
+use Juzaweb\PaymentMethod\Support\PaymentMethodManager;
 
 class PaymentMethodServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
-        //
+        $this->registerHookActions([PaymentMethodAction::class]);
     }
 
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register()
+    public function register(): void
     {
-        //
+        $this->app->singleton(
+            PaymentMethodManagerContract::class,
+            PaymentMethodManager::class
+        );
     }
 }

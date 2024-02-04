@@ -11,8 +11,9 @@
 namespace Juzaweb\PaymentMethod\Support;
 
 use Juzaweb\PaymentMethod\Models\PaymentMethod as PaymentMethodModel;
+use Juzaweb\PaymentMethod\Contracts\PaymentMethodManager as PaymentMethodManagerContract;
 
-class PaymentMethodManager
+class PaymentMethodManager implements PaymentMethodManagerContract
 {
     protected static array $paymentMethods = [];
 

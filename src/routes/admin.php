@@ -11,4 +11,13 @@
 |
 */
 
+use Juzaweb\PaymentMethod\Http\Controllers\Backend\PaymentMethodController;
+
+Route::jwResource(
+    'payment-methods',
+    PaymentMethodController::class,
+    [
+        'name' => 'payment_methods'
+    ]
+);
 
