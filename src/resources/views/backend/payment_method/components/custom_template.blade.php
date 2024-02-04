@@ -1,5 +1,5 @@
 {{ Field::textarea(
-    trans('ecom::content.payment_description'),
+    trans('payment_method::content.payment_description'),
     'data[description]',
     [
         'value' => $data['description'] ?? ''

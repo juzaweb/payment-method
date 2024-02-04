@@ -13,11 +13,11 @@
                     'label' => trans('cms::app.general')
                 ])
                     {{ Field::select($model, 'type', [
-                        'disabled' => $model->id ? true : false,
+                        'disabled' => (bool)$model->id,
                         'required' => true,
-                        'label' => trans('ecom::content.method'),
+                        'label' => trans('payment_method::content.method'),
                         'options' => array_merge(
-                            ['' => '--- '.trans('ecom::content.payment_method').' ---'],
+                            ['' => '--- '.trans('payment_method::content.payment_method').' ---'],
                             $methods
                         )
                     ]) }}
@@ -36,7 +36,7 @@
                     'class' => $model->data ? 'box-data': 'box-hidden box-data'
                 ])
                     @if($model->type == 'paypal')
-                        @component('ecom::backend.payment_method.components.paypal_template', [
+                        @component('payment_method::backend.payment_method.components.paypal_template', [
                         'data' => $model->data
                     ])
 
@@ -44,7 +44,7 @@
                     @endif
 
                     @if($model->type == 'custom')
-                        @component('ecom::backend.payment_method.components.custom_template', [
+                        @component('payment_method::backend.payment_method.components.custom_template', [
                         'data' => $model->data
                     ])
 
@@ -67,13 +67,13 @@
     @endcomponent
 
     <template id="data-custom">
-        @component('ecom::backend.payment_method.components.custom_template')
+        @component('payment_method::backend.payment_method.components.custom_template')
 
         @endcomponent
     </template>
 
     <template id="data-paypal">
-        @component('ecom::backend.payment_method.components.paypal_template')
+        @component('payment_method::backend.payment_method.components.paypal_template')
 
         @endcomponent
     </template>

@@ -5,27 +5,22 @@ namespace Juzaweb\PaymentMethod\Http\Datatables;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Arr;
 use Juzaweb\CMS\Abstracts\DataTable;
-use Juzaweb\Ecommerce\Models\PaymentMethod;
+use Juzaweb\PaymentMethod\Models\PaymentMethod;
 
 class PaymentMethodDatatable extends DataTable
 {
-    /**
-     * Columns datatable
-     *
-     * @return array
-     */
     public function columns(): array
     {
         return [
             'name' => [
-                'label' => trans('ecom::content.name'),
+                'label' => trans('payment_method::content.name'),
                 'formatter' => [$this, 'rowActionsFormatter'],
             ],
             'type' => [
-                'label' => trans('ecom::content.method'),
+                'label' => trans('payment_method::content.method'),
                 'width' => '20%',
                 'formatter' => function ($value, $row, $index) {
-                    return trans("ecom::content.data.payment_methods.{$value}");
+                    return trans("payment_method::content.data.payment_methods.{$value}");
                 }
             ],
             'active' => [
@@ -50,12 +45,6 @@ class PaymentMethodDatatable extends DataTable
         ];
     }
 
-    /**
-     * Query data datatable
-     *
-     * @param  array  $data
-     * @return Builder
-     */
     public function query(array $data): \Illuminate\Contracts\Database\Query\Builder
     {
         $query = PaymentMethod::select(
