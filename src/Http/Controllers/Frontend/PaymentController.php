@@ -101,13 +101,16 @@ class PaymentController extends FrontendController
 
             DB::transaction(
                 function () use ($helper, $method, $module, $request, $registedModule) {
-                    $hanlder = app()->make($registedModule->get('handler'));
-                    $completed = $hanlder->completed($request->all());
+                    $handler = app()->make($registedModule->get('handler'));
+                    $completed = $handler->completed(
+                        $helper->getPaymentId(),
+                        $helper->getAmount()
+                    );
 
                     PaymentHistory::create(
                         [
                             'payment_method' => $method,
-                            'module_id' => $completed->id,
+                            'module_id' => $completed->getModuleId(),
                             'module_type' => $module,
                             'user_id' => $request->user()->id,
                             'payment_id' => $helper->getPaymentId(),

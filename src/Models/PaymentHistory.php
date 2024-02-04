@@ -21,6 +21,8 @@ class PaymentHistory extends Model
         'amount',
     ];
 
+    protected $casts = ['data' => 'array', 'amount' => 'float'];
+
     public function paymentMethod(): BelongsTo
     {
         return $this->belongsTo(PaymentMethod::class, 'payment_method', 'type');

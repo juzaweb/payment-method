@@ -12,8 +12,17 @@ namespace Juzaweb\PaymentMethod\Support\Entities;
 
 class PaymentHandlerCompleted
 {
-    public static function make(int $id)
+    public static function make(int $moduleId, string $paymentId, float $amount): static
     {
+        return new static($moduleId);
+    }
 
+    public function __construct(protected int $moduleId)
+    {
+    }
+
+    public function getModuleId(): int|string
+    {
+        return $this->moduleId;
     }
 }
