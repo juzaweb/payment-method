@@ -32,7 +32,7 @@ class PaymentController extends FrontendController
         if ($paymentMethod === null) {
             return $this->error(
                 [
-                    'redirect' => action([static::class, 'cancel']),
+                    'redirect' => action([static::class, 'cancel'], ['module' => $module]),
                     'message' => __('Payment method not found.'),
                 ]
             );
@@ -44,8 +44,8 @@ class PaymentController extends FrontendController
                 [
                     'amount' => $request->input('amount'),
                     'currency' => 'USD',
-                    'cancelUrl' => action([static::class, 'cancel']),
-                    'returnUrl' => action([static::class, 'completed']),
+                    'cancelUrl' => action([static::class, 'cancel'], ['module' => $module]),
+                    'returnUrl' => action([static::class, 'completed'], ['module' => $module]),
                 ]
             );
 

@@ -25,8 +25,7 @@ class PaymentMethodController extends BackendController
 
     protected function validator(array $attributes, ...$params): \Illuminate\Validation\Validator
     {
-        $types = config('ecommerce.payment_methods');
-        $types = array_keys($types);
+        $types = app()->make(PaymentMethodManager::class)->getPaymentMethods()->keys()->toArray();
 
         return Validator::make(
             $attributes,

@@ -53,10 +53,12 @@ class PaymentMethod extends Model
 
     protected $table = 'payment_methods';
     protected string $fieldName = 'name';
-    protected $guarded = [
-        'id',
-        'created_at',
-        'updated_at'
+
+    protected $fillable = [
+        'name',
+        'description',
+        'data',
+        'active',
     ];
 
     protected $casts = [

@@ -19,9 +19,6 @@ class PaymentMethodDatatable extends DataTable
             'type' => [
                 'label' => trans('payment_method::content.method'),
                 'width' => '20%',
-                'formatter' => function ($value, $row, $index) {
-                    return trans("payment_method::content.data.payment_methods.{$value}");
-                }
             ],
             'active' => [
                 'label' => trans('cms::app.status'),
