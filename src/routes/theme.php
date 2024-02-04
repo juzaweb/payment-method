@@ -10,6 +10,6 @@
 
 use Juzaweb\PaymentMethod\Http\Controllers\Frontend\PaymentController;
 
-Route::post('ajax/payment/purchase', [PaymentController::class, 'buy']);
-Route::get('ajax/payment/cancel', [PaymentController::class, 'cancel']);
-Route::get('ajax/payment/completed', [PaymentController::class, 'completed']);
+Route::post('ajax/payment/{module}/purchase', [PaymentController::class, 'buy']);
+Route::get('ajax/payment/{module}/cancel', [PaymentController::class, 'cancel']);
+Route::get('ajax/payment/{module}/completed', [PaymentController::class, 'completed']);

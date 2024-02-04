@@ -16,7 +16,8 @@ return new class extends Migration {
             'payment_method_payment_histories',
             function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->morphs('order');
+                $table->morphs('module');
+                $table->string('payment_order_id', 150);
                 $table->string('payment_method', 50);
                 $table->string('status', 50)->default('success');
                 $table->json('data')->nullable();
@@ -24,6 +25,7 @@ return new class extends Migration {
                     ->constrained('users')
                     ->onDelete('cascade');
                 $table->timestamps();
+                $table->index(['module_type']);
             }
         );
     }

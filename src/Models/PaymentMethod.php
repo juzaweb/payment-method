@@ -63,7 +63,12 @@ class PaymentMethod extends Model
         'data' => 'array',
     ];
 
-    public function scopeActive($builder)
+    public static function findByType(string $type): PaymentMethod|null
+    {
+        return self::where('type', '=', $type)->first();
+    }
+
+    public function scopeActive(Builder $builder): Builder
     {
         return $builder->where('active', '=', self::STATUS_ACTIVE);
     }

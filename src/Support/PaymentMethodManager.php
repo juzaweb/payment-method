@@ -10,16 +10,40 @@
 
 namespace Juzaweb\PaymentMethod\Support;
 
-use Juzaweb\PaymentMethod\Models\PaymentMethod as PaymentMethodModel;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Juzaweb\PaymentMethod\Contracts\PaymentMethodManager as PaymentMethodManagerContract;
+use Juzaweb\PaymentMethod\Models\PaymentMethod as PaymentMethodModel;
+use RuntimeException;
 
 class PaymentMethodManager implements PaymentMethodManagerContract
 {
     protected static array $paymentMethods = [];
 
-    public function register(string $name, string $class): void
+    protected static array $modules = [];
+
+    public function register(string $name, string|array $class): void
     {
         static::$paymentMethods[$name] = $class;
+    }
+
+    public function getPaymentMethods(): Collection
+    {
+        return collect(static::$paymentMethods)
+            ->map(
+                function ($class, $key) {
+                    return [
+                        'handle' => $class,
+                        'key' => $key,
+                        'name' => Str::ucfirst($key),
+                    ];
+                }
+            );
+    }
+
+    public function registerModule(string $key, array $args): void
+    {
+        static::$modules[$key] = $args;
     }
 
     public function make(PaymentMethodModel $paymentMethod): PaymentMethodInterface
@@ -28,7 +52,7 @@ class PaymentMethodManager implements PaymentMethodManagerContract
             return app()->make(static::$paymentMethods[$paymentMethod->type], ['paymentMethod' => $paymentMethod]);
         }
 
-        throw new \RuntimeException('Payment method not found');
+        throw new RuntimeException('Payment method not found');
     }
 
     public function purchase(PaymentMethodModel $paymentMethod, array $params = []): PaymentMethodInterface

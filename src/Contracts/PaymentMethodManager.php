@@ -2,6 +2,7 @@
 
 namespace Juzaweb\PaymentMethod\Contracts;
 
+use Illuminate\Support\Collection;
 use Juzaweb\PaymentMethod\Models\PaymentMethod as PaymentMethodModel;
 use Juzaweb\PaymentMethod\Support\PaymentMethodInterface;
 
@@ -23,6 +24,22 @@ interface PaymentMethodManager
      * @return void
      */
     public function register(string $name, string $class): void;
+
+    /**
+     * Retrieves the payment methods as a collection
+     *
+     * @return Collection
+     */
+    public function getPaymentMethods(): Collection;
+
+    /**
+     * Register a module with the given key and arguments.
+     *
+     * @param string $key The key of the module.
+     * @param array $args The arguments for the module.
+     * @return void
+     */
+    public function registerModule(string $key, array $args): void;
 
     /**
      * Create a PaymentMethodInterface from the given PaymentMethodModel.

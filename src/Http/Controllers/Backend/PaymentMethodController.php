@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Juzaweb\CMS\Http\Controllers\BackendController;
 use Juzaweb\CMS\Traits\ResourceController;
+use Juzaweb\PaymentMethod\Contracts\PaymentMethodManager;
 use Juzaweb\PaymentMethod\Http\Datatables\PaymentMethodDatatable;
 use Juzaweb\PaymentMethod\Models\PaymentMethod;
 
@@ -54,7 +55,11 @@ class PaymentMethodController extends BackendController
     protected function getDataForForm($model, ...$params): array
     {
         $data = $this->DataForForm($model);
-        $data['methods'] = [];
+        $data['methods'] = app()->make(PaymentMethodManager::class)
+            ->getPaymentMethods()
+            ->pluck('name', 'key')
+            ->toArray();
+
         return $data;
     }
 
