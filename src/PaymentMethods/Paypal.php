@@ -10,7 +10,7 @@
 
 namespace Juzaweb\PaymentMethod\PaymentMethods;
 
-use Juzaweb\Ecommerce\Abstracts\PaymentMethodAbstract;
+use Juzaweb\PaymentMethod\Abstracts\PaymentMethodAbstract;
 use Juzaweb\PaymentMethod\Support\PaymentMethodInterface;
 use Omnipay\Common\GatewayInterface;
 use Omnipay\Omnipay;

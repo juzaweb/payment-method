@@ -1,11 +1,10 @@
 {
     "name": "juzaweb/payment-method",
-    "description": "",
+    "description": "Payment method plugin for Juzaweb CMS",
     "extra": {
         "juzaweb": {
             "name": "juzaweb/payment-method",
-            "domain": "jupa",
-            "cms_min": "3.3",
+            "domain": "payment_method",
             "version": "1.0",
             "providers": [
                 "Juzaweb\\PaymentMethod\\Providers\\PaymentMethodServiceProvider"
@@ -16,5 +15,9 @@
         "psr-4": {
             "Juzaweb\\PaymentMethod\\": "src/"
         }
+    },
+    "require": {
+        "league/omnipay": "^3",
+        "omnipay/paypal": "^3.0"
     }
 }
