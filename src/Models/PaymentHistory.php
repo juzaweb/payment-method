@@ -17,7 +17,8 @@ class PaymentHistory extends Model
         'module_id',
         'module_type',
         'user_id',
-        'payment_order_id',
+        'payment_id',
+        'amount',
     ];
 
     public function paymentMethod(): BelongsTo

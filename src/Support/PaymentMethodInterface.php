@@ -23,4 +23,12 @@ interface PaymentMethodInterface
     public function getRedirectURL(): null|string;
 
     public function getMessage(): string;
+
+    public function getPaymentId(): string;
+
+    public function setPaymentId(string $paymentId): static;
+
+    public function getAmount(): float;
+
+    public function setAmount(float $amount): static;
 }

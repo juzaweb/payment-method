@@ -43,7 +43,21 @@ class PaymentMethodManager implements PaymentMethodManagerContract
 
     public function registerModule(string $key, array $args): void
     {
-        static::$modules[$key] = $args;
+        if (!isset($args['handler'])) {
+            throw new RuntimeException('Module handler is required');
+        }
+
+        static::$modules[$key] = new Collection($args);
+    }
+
+    public function getModule(string $key): Collection
+    {
+        return static::$modules[$key];
+    }
+
+    public function getModules(): Collection
+    {
+        return new Collection(static::$modules);
     }
 
     public function make(PaymentMethodModel $paymentMethod): PaymentMethodInterface

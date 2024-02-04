@@ -44,6 +44,10 @@ class Paypal extends PaymentMethodAbstract implements PaymentMethodInterface
 
         $this->successful = $response->isSuccessful();
 
+        $this->setPaymentId($params['paymentId']);
+
+        $this->setAmount($response->getData()['transactions'][0]['amount']['total']);
+
         return $this;
     }
 
@@ -75,7 +79,7 @@ class Paypal extends PaymentMethodAbstract implements PaymentMethodInterface
 
         return [
             'clientId' => $clientId,
-            'secret'   => $secret,
+            'secret' => $secret,
             'testMode' => $testMode,
         ];
     }

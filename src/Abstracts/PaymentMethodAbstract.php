@@ -10,6 +10,7 @@
 
 namespace Juzaweb\PaymentMethod\Abstracts;
 
+use Juzaweb\PaymentMethod\Models\PaymentMethod;
 use Juzaweb\PaymentMethod\Support\PaymentMethodInterface;
 
 abstract class PaymentMethodAbstract
@@ -21,6 +22,10 @@ abstract class PaymentMethodAbstract
     protected bool $successful = false;
 
     protected string $redirectURL = '';
+
+    protected string $paymentId;
+
+    protected float $amount;
 
     public function __construct(PaymentMethod $paymentMethod)
     {
@@ -48,6 +53,30 @@ abstract class PaymentMethodAbstract
     public function getMessage(): string
     {
         return __('Thank you for your order.');
+    }
+
+    public function getPaymentId(): string
+    {
+        return $this->paymentId;
+    }
+
+    public function setPaymentId(string $paymentId): static
+    {
+        $this->paymentId = $paymentId;
+
+        return $this;
+    }
+
+    public function getAmount(): float
+    {
+        return $this->amount;
+    }
+
+    public function setAmount(float $amount): static
+    {
+        $this->amount = $amount;
+
+        return $this;
     }
 
     protected function setRedirectURL(string $url): void

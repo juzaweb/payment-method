@@ -41,6 +41,10 @@ interface PaymentMethodManager
      */
     public function registerModule(string $key, array $args): void;
 
+    public function getModule(string $key): Collection;
+
+    public function getModules(): Collection;
+
     /**
      * Create a PaymentMethodInterface from the given PaymentMethodModel.
      *

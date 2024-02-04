@@ -17,14 +17,16 @@ return new class extends Migration {
             function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->morphs('module');
-                $table->string('payment_order_id', 150);
+                $table->string('payment_id', 150);
                 $table->string('payment_method', 50);
                 $table->string('status', 50)->default('success');
                 $table->json('data')->nullable();
+                $table->float('amount');
+                $table->timestamps();
+
                 $table->foreignId('user_id')
                     ->constrained('users')
                     ->onDelete('cascade');
-                $table->timestamps();
                 $table->index(['module_type']);
             }
         );
