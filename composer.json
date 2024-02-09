@@ -1,5 +1,6 @@
 {
     "name": "juzaweb/payment-method",
+    "type": "juzaweb-plugin",
     "description": "Payment method plugin for Juzaweb CMS",
     "extra": {
         "juzaweb": {
