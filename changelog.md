@@ -1,3 +1,6 @@
+### v1.0.1 
+* :+1: Update composer
+
 ### v1.0.0 
 * :+1: Payment method
 * :+1: Payment
