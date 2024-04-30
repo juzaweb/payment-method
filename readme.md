@@ -35,6 +35,9 @@ interface PaymentMethodInterface
     public function setAmount(float $amount): static;
 }
 ```
+
+View example [PayPal payment](https://github.com/juzaweb/payment-method/blob/master/src/PaymentMethods/Paypal.php)
+
 - Register payment method in PaymentMethodManager
 
 In your HookAction handle
