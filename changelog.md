@@ -1,3 +1,8 @@
+### v1.0.2 
+* :memo: Update readme
+* :bug: Fix add payment method
+* :+1: Fix migrate
+
 ### v1.0.1 
 * :+1: Update composer
 
